@@ -1,0 +1,46 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1938 ]
+[d frameptr 6 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"42 C:\Users\MORIYAMA\MPLABXProjects\driver_test.X\newmain.c
+[v _main main `(v  1 e 0 0 ]
+"1195 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f1938.h
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1256
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1317
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"1807
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"3010
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3067
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3359
+[v _SPBRG SPBRG `VEuc  1 e 1 @411 ]
+"3444
+[v _RCSTA RCSTA `VEuc  1 e 1 @413 ]
+"3505
+[v _TXSTA TXSTA `VEuc  1 e 1 @414 ]
+"7641
+[v _RA1 RA1 `VEb  1 e 0 @97 ]
+"7643
+[v _RA2 RA2 `VEb  1 e 0 @98 ]
+"7645
+[v _RA3 RA3 `VEb  1 e 0 @99 ]
+"7649
+[v _RA5 RA5 `VEb  1 e 0 @101 ]
+"42 C:\Users\MORIYAMA\MPLABXProjects\driver_test.X\newmain.c
+[v _main main `(v  1 e 0 0 ]
+{
+"60
+} 0
