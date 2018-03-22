@@ -1,5 +1,6 @@
 #include<xc.h>
 #include"rotaion.h"
+#include<stdint.h>
 int step_pattern_left[4][4]= //???
     {{0,0,0,1},
     {0,1,0,0},

@@ -4188,7 +4188,7 @@ RA0 = step_pattern_right[i][0];
 RA4 = step_pattern_right[i][1];
 RC1 = step_pattern_right[i][2];
 RC2 = step_pattern_right[i][3];
-_delay((unsigned long)((5000)*(_XTAL_FREQ/4000000.0)));
+_delay((unsigned long)((3000)*(_XTAL_FREQ/4000000.0)));
 k++;
 }
 }
@@ -4205,7 +4205,7 @@ RA0 = step_pattern_left[i][0];
 RA4 = step_pattern_left[i][1];
 RC1 = step_pattern_left[i][2];
 RC2 = step_pattern_left[i][3];
-_delay((unsigned long)((5000)*(_XTAL_FREQ/4000000.0)));
+_delay((unsigned long)((3000)*(_XTAL_FREQ/4000000.0)));
 k++;
 }
 }

@@ -4498,21 +4498,7 @@ void time();
 #pragma config BORV = HI
 #pragma config LVP = OFF
 
-# 58
-int step(int deg);
-void right(int mal,int speed);
-void left(int mal);
-void recive();
-int data = 0;
-void interrupt isr(){
-if(RCIF){
-data = RCREG;
-}
-}
-int Flag = 0;
-
-
-
+# 56
 void main() {
 int sel;
 sel =16- (RB2*1+RB3*2+RB0*4+RB1*8)-1;
@@ -4522,19 +4508,7 @@ RA3 = 0;
 RA5 = 0;
 RA2 = 0;
 while(1){
-RA1 = 1;
-if(data == 0x72){
-TXREG = 'R';
-right(120,0);
-}
-if(data == 0x6C){
-TXREG = 'L';
-left(120);
-}
-if(data == 0x77){
-right(30,0);
-}
-_delay((unsigned long)((1000)*(8000000/4000.0)));
+
 }
 }
 
