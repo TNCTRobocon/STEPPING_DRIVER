@@ -48,21 +48,56 @@
 // Use project enums instead of #define for ON and OFF.
 #define _XTAL_FREQ 8000000          //????8MHz
 
-#define sg1 RA1
-#define sg2 RA2
-#define sg3 RA3
-#define sg4 RA5
+#define LED1 RA1
+#define LED2 RA2
+#define LED3 RA3
+#define LED_SEL RA5
 
 void main() {
-    int sel;    
-    sel =16- (RB2*1+RB3*2+RB0*4+RB1*8)-1;       //Selの決定
+    char line[32];
+    char* argv[4],* title,* val;
+    int argc;
+    char* it;
+    const char tokens[]=" ,";
+    int address = 16- (RB2*1+RB3*2+RB0*4+RB1*8)-1;;
+    bool mode_sel=0;
     setup();        //初期設定
-    sg1 = 0;
-    sg3 = 0;
-    sg4 = 0;
-    sg2 = 0;        //全LEDOFF
+    LED1 = 0;
+    LED2 = 0;
+    LED3 = 0;
+    LED_SEL = 0;        //全LEDOFF
     while(1){
-        
+        if(uart_gets(line,sizeof(line))!=NULL){
+            size_t len=strlen(line);
+            if (line[len-1]=='!')continue;
+            argv[0] = strtok(line,tokens);
+            for (argc=1;argc<sizeof(argv)/sizeof(argv[0]);argc++){
+                argv[argc]=it=strtok(NULL,tokens);
+                if(it==NULL)break;
+            }
+            title=argv[0];
+            val=argv[1];
+            if(!strcmp(title,"sel")){
+                int addr=0;
+                if(argc>=2&&argv!=NULL)addr=atoi(val);
+                if(addr==address)mode_sel=LED_SEL=1;
+                else if(!addr){
+                    mode_sel=1;
+                    LED_SEL=0;
+                }else mode_sel=LED_SEL=0;
+            }else if(!strcmp(title,"right")){
+                uart_send("right");
+                right(val,0);
+            }
+            else if(!strcmp(title,"left")){
+                uart_send("left");
+                left(val,0);
+            }else if(!strcmp(title,"echo")){
+                for(int i=0;i<strlen(val);i++){
+                    uart_send(val[i]);
+                }
+            }
+         }
         }
 }
 

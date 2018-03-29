@@ -1,6 +1,8 @@
 #include<xc.h>
+#include<math.h>
 #include"rotaion.h"
 #include<stdint.h>
+#define _XTAL_FREQ 8000000  
 int step_pattern_left[4][4]= //???
     {{0,0,0,1},
     {0,1,0,0},
@@ -22,7 +24,6 @@ int step(int deg){
 
 void right(int mal,int speed){         
     int k = 0;
-    //sg2 = 1;
     uint16_t pluse = step(mal);
     while(k < pluse-20){
         for(int i = 0;i < 4;i++){  
@@ -34,10 +35,9 @@ void right(int mal,int speed){
             k++;
         }
     }
-    //sg2 = 0;
 }
 
-void left(int mal){              //??????????
+void left(int mal,int speed){              //??????????
     int i;
     int k = 0;
     uint16_t pluse = step(mal);
@@ -51,5 +51,4 @@ void left(int mal){              //??????????
             k++;
         }
     }
-    //sg1 = 0;
 }

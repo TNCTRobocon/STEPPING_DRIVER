@@ -13,9 +13,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RCIE `Vb ~T0 @X0 0 e@1165 ]
 "7601
 [v _PEIE `Vb ~T0 @X0 0 e@94 ]
-[v F52 `(v ~T0 @X0 1 tf ]
-"21 uart.h
-[v _uart_flush `TF52 ~T0 @X0 0 e ]
+[v F54 `(v ~T0 @X0 1 tf ]
+"22 uart.h
+[v _uart_flush `TF54 ~T0 @X0 0 e ]
 "8173 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f1938.h
 [v _TXIE `Vb ~T0 @X0 0 e@1164 ]
 "3329
@@ -64,10 +64,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.h: 17: const char* uart_get(const char*);
 [; ;uart.h: 18: const char* uart_write(const char*,size_t);
 [; ;uart.h: 19: char* uart_read(const char*,size_t);
-[; ;uart.h: 20: size_t uart_received();
-[; ;uart.h: 21: inline void uart_flush();
-[; ;uart.h: 22: void TXInterrupt();
-[; ;uart.h: 23: void RXInterrupt();
+[; ;uart.h: 20: void receive_isr(void);
+[; ;uart.h: 21: size_t uart_received();
+[; ;uart.h: 22: inline void uart_flush();
+[; ;uart.h: 23: void TXInterrupt();
+[; ;uart.h: 24: void RXInterrupt();
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic16f1938.h: 49: extern volatile unsigned char INDF0 @ 0x000;
@@ -3205,9 +3206,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "42
 [e :UE 352 ]
 }
-[v F3318 `(uc ~T0 @X0 1 tf1`uc ]
+[v F3320 `(uc ~T0 @X0 1 tf1`uc ]
 "44
-[v _uart_bufc `TF3318 ~T0 @X0 1 e ]
+[v _uart_bufc `TF3320 ~T0 @X0 1 e ]
 {
 [; ;uart.c: 44: inline char uart_bufc(char c) {
 [e :U _uart_bufc ]
@@ -3230,9 +3231,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "49
 [e :UE 354 ]
 }
-[v F3320 `(uc ~T0 @X0 1 tf ]
+[v F3322 `(uc ~T0 @X0 1 tf ]
 "51
-[v _uart_bufnl `TF3320 ~T0 @X0 1 e ]
+[v _uart_bufnl `TF3322 ~T0 @X0 1 e ]
 {
 [; ;uart.c: 51: inline char uart_bufnl(){
 [e :U _uart_bufnl ]
@@ -3285,7 +3286,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 356 ]
 }
 "65
-[v _uart_flush `TF52 ~T0 @X0 1 e ]
+[v _uart_flush `TF54 ~T0 @X0 1 e ]
 {
 [; ;uart.c: 65: inline void uart_flush(){
 [e :U _uart_flush ]
@@ -3473,7 +3474,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart.c: 108: const char* uart_get(const char*){
 [e :U _uart_get ]
-[v F3335 `*Cuc ~T0 @X0 1 r1 ]
+[v F3337 `*Cuc ~T0 @X0 1 r1 ]
 [f ]
 "109
 [v _c `*uc ~T0 @X0 1 A ]

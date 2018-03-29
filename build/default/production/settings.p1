@@ -3064,9 +3064,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;settings.c: 14: ANSELB = 0x00;
 "14
 [e = _ANSELB -> -> 0 `i `uc ]
-[; ;settings.c: 16: T0CS=1;
+[; ;settings.c: 16: T0CS=0;
 "16
-[e = _T0CS -> -> 1 `i `b ]
+[e = _T0CS -> -> 0 `i `b ]
 [; ;settings.c: 17: PSA=0;
 "17
 [e = _PSA -> -> 0 `i `b ]

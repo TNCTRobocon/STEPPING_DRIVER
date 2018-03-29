@@ -108,6 +108,7 @@ char* uart_gets(char* mem,size_t size);
 const char* uart_get(const char*);
 const char* uart_write(const char*,size_t);
 char* uart_read(const char*,size_t);
+void receive_isr(void);
 size_t uart_received();
 inline void uart_flush();
 void TXInterrupt();

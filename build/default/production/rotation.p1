@@ -1,10 +1,18 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"8061 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f1938.h
-[v _TMR0IF `Vb ~T0 @X0 0 e@90 ]
-"7693
-[v _RCIF `Vb ~T0 @X0 0 e@141 ]
-"20 uart.h
-[v _receive_isr `(v ~T0 @X0 0 ef ]
+"32 C:\Program Files (x86)\Microchip\xc8\v1.34\include\math.h
+[v _ceil `(d ~T0 @X0 0 ef1`d ]
+"7639 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f1938.h
+[v _RA0 `Vb ~T0 @X0 0 e@96 ]
+"7647
+[v _RA4 `Vb ~T0 @X0 0 e@100 ]
+"7673
+[v _RC1 `Vb ~T0 @X0 0 e@113 ]
+"7675
+[v _RC2 `Vb ~T0 @X0 0 e@114 ]
+[v F3160 `(v ~T0 @X0 1 tf1`ul ]
+"150 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic.h
+[v __delay `JF3160 ~T0 @X0 0 e ]
+[p i __delay ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic16f1938.h: 49: extern volatile unsigned char INDF0 @ 0x000;
@@ -3008,11 +3016,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 184: extern unsigned char __resetbits;
 [; ;pic.h: 185: extern __bit __powerdown;
 [; ;pic.h: 186: extern __bit __timeout;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;stddef.h: 2: typedef int ptrdiff_t;
-[; ;stddef.h: 3: typedef unsigned size_t;
-[; ;stddef.h: 4: typedef unsigned short wchar_t;
-[; ;stddef.h: 13: extern int errno;
+[; ;math.h: 30: extern double fabs(double);
+[; ;math.h: 31: extern double floor(double);
+[; ;math.h: 32: extern double ceil(double);
+[; ;math.h: 33: extern double modf(double, double *);
+[; ;math.h: 34: extern double sqrt(double);
+[; ;math.h: 35: extern double atof(const char *);
+[; ;math.h: 36: extern double sin(double) ;
+[; ;math.h: 37: extern double cos(double) ;
+[; ;math.h: 38: extern double tan(double) ;
+[; ;math.h: 39: extern double asin(double) ;
+[; ;math.h: 40: extern double acos(double) ;
+[; ;math.h: 41: extern double atan(double);
+[; ;math.h: 42: extern double atan2(double, double) ;
+[; ;math.h: 43: extern double log(double);
+[; ;math.h: 44: extern double log10(double);
+[; ;math.h: 45: extern double pow(double, double) ;
+[; ;math.h: 46: extern double exp(double) ;
+[; ;math.h: 47: extern double sinh(double) ;
+[; ;math.h: 48: extern double cosh(double) ;
+[; ;math.h: 49: extern double tanh(double);
+[; ;math.h: 50: extern double eval_poly(double, const double *, int);
+[; ;math.h: 51: extern double frexp(double, int *);
+[; ;math.h: 52: extern double ldexp(double, int);
+[; ;math.h: 53: extern double fmod(double, double);
+[; ;math.h: 54: extern double trunc(double);
+[; ;math.h: 55: extern double round(double);
+[; ;rotaion.h: 11: void right(int step,int speed);
+[; ;rotaion.h: 12: void left(int step,int speed);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -3041,52 +3072,242 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;uart.h: 12: void uart_setup();
-[; ;uart.h: 13: char uart_getc();
-[; ;uart.h: 14: char uart_putc(char);
-[; ;uart.h: 15: void uart_send(char data);
-[; ;uart.h: 16: char* uart_gets(char* mem,size_t size);
-[; ;uart.h: 17: const char* uart_get(const char*);
-[; ;uart.h: 18: const char* uart_write(const char*,size_t);
-[; ;uart.h: 19: char* uart_read(const char*,size_t);
-[; ;uart.h: 20: void receive_isr(void);
-[; ;uart.h: 21: size_t uart_received();
-[; ;uart.h: 22: inline void uart_flush();
-[; ;uart.h: 23: void TXInterrupt();
-[; ;uart.h: 24: void RXInterrupt();
-[v F3222 `(v ~T0 @X0 1 tf ]
-"4 interrupt.c
-[v _isr `IF3222 ~T0 @X0 1 e ]
-{
-[; ;interrupt.c: 4: void interrupt isr(){
-[e :U _isr ]
-[f ]
-[; ;interrupt.c: 5: if(TMR0IF){
-"5
-[e $ ! _TMR0IF 351  ]
-{
-[; ;interrupt.c: 7: TMR0IF = 0;
+[v F3259 `i ~T0 @X0 -> 4 `i t ]
+"6 rotation.c
+[v _step_pattern_left `F3259 ~T0 @X0 -> 4 `i e ]
+[i _step_pattern_left
+:U ..
+:U ..
 "7
-[e = _TMR0IF -> -> 0 `i `b ]
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 1 `i
+..
+:U ..
 "8
-}
-[e :U 351 ]
-[; ;interrupt.c: 8: }
-[; ;interrupt.c: 9: if(RCIF){
+-> 0 `i
+-> 1 `i
+-> 0 `i
+-> 0 `i
+..
+:U ..
 "9
-[e $ ! _RCIF 352  ]
-{
-[; ;interrupt.c: 10: receive_isr();
+-> 0 `i
+-> 0 `i
+-> 1 `i
+-> 0 `i
+..
+:U ..
 "10
-[e ( _receive_isr ..  ]
-[; ;interrupt.c: 11: RCIF = 0;
-"11
-[e = _RCIF -> -> 0 `i `b ]
-"12
+-> 1 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+..
+..
+]
+[; ;rotation.c: 6: int step_pattern_left[4][4]=
+[; ;rotation.c: 7: {{0,0,0,1},
+[; ;rotation.c: 8: {0,1,0,0},
+[; ;rotation.c: 9: {0,0,1,0},
+[; ;rotation.c: 10: {1,0,0,0}
+[; ;rotation.c: 11: };
+[v F3261 `i ~T0 @X0 -> 4 `i t ]
+"13
+[v _step_pattern_right `F3261 ~T0 @X0 -> 4 `i e ]
+[i _step_pattern_right
+:U ..
+:U ..
+"14
+-> 0 `i
+-> 1 `i
+-> 0 `i
+-> 0 `i
+..
+:U ..
+"15
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 1 `i
+..
+:U ..
+"16
+-> 1 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+..
+:U ..
+"17
+-> 0 `i
+-> 0 `i
+-> 1 `i
+-> 0 `i
+..
+..
+]
+[; ;rotation.c: 13: int step_pattern_right[4][4]={
+[; ;rotation.c: 14: {0,1,0,0},
+[; ;rotation.c: 15: {0,0,0,1},
+[; ;rotation.c: 16: {1,0,0,0},
+[; ;rotation.c: 17: {0,0,1,0}
+[; ;rotation.c: 18: };
+"20
+[v _step `(i ~T0 @X0 1 ef1`i ]
+{
+[; ;rotation.c: 20: int step(int deg){
+[e :U _step ]
+[v _deg `i ~T0 @X0 1 r1 ]
+[f ]
+"21
+[v _a `ui ~T0 @X0 1 a ]
+[; ;rotation.c: 21: uint16_t a=ceil(14*deg/1.8);
+[e = _a -> ( _ceil (1 / -> * -> 14 `i _deg `d .1.8 `ui ]
+[; ;rotation.c: 22: return a;
+"22
+[e ) -> _a `i ]
+[e $UE 350  ]
+[; ;rotation.c: 23: }
+"23
+[e :UE 350 ]
+}
+"25
+[v _right `(v ~T0 @X0 1 ef2`i`i ]
+{
+[; ;rotation.c: 25: void right(int mal,int speed){
+[e :U _right ]
+[v _mal `i ~T0 @X0 1 r1 ]
+[v _speed `i ~T0 @X0 1 r2 ]
+[f ]
+"26
+[v _k `i ~T0 @X0 1 a ]
+[; ;rotation.c: 26: int k = 0;
+[e = _k -> 0 `i ]
+"27
+[v _pluse `ui ~T0 @X0 1 a ]
+[; ;rotation.c: 27: uint16_t pluse = step(mal);
+[e = _pluse -> ( _step (1 _mal `ui ]
+[; ;rotation.c: 28: while(k < pluse-20){
+"28
+[e $U 352  ]
+[e :U 353 ]
+{
+[; ;rotation.c: 29: for(int i = 0;i < 4;i++){
+"29
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 4 `i 355  ]
+[e $U 356  ]
+[e :U 355 ]
+{
+[; ;rotation.c: 30: RA0 = step_pattern_right[i][0];
+"30
+[e = _RA0 -> *U + &U *U + &U _step_pattern_right * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_right `ui -> -> 4 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _step_pattern_right * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_right `ui -> -> 4 `i `ui `ux `ui `ux `b ]
+[; ;rotation.c: 31: RA4 = step_pattern_right[i][1];
+"31
+[e = _RA4 -> *U + &U *U + &U _step_pattern_right * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_right `ui -> -> 4 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _step_pattern_right * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_right `ui -> -> 4 `i `ui `ux `ui `ux `b ]
+[; ;rotation.c: 32: RC1 = step_pattern_right[i][2];
+"32
+[e = _RC1 -> *U + &U *U + &U _step_pattern_right * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_right `ui -> -> 4 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _step_pattern_right * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_right `ui -> -> 4 `i `ui `ux `ui `ux `b ]
+[; ;rotation.c: 33: RC2 = step_pattern_right[i][3];
+"33
+[e = _RC2 -> *U + &U *U + &U _step_pattern_right * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_right `ui -> -> 4 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _step_pattern_right * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_right `ui -> -> 4 `i `ui `ux `ui `ux `b ]
+[; ;rotation.c: 34: _delay((unsigned long)((3000)*(8000000/4000000.0)));
+"34
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;rotation.c: 35: k++;
+"35
+[e ++ _k -> 1 `i ]
+"36
+}
+"29
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 4 `i 355  ]
+[e :U 356 ]
+"36
+}
+"37
 }
 [e :U 352 ]
-[; ;interrupt.c: 12: }
-[; ;interrupt.c: 13: }
-"13
-[e :UE 350 ]
+"28
+[e $ < -> _k `ui - _pluse -> -> 20 `i `ui 353  ]
+[e :U 354 ]
+[; ;rotation.c: 36: }
+[; ;rotation.c: 37: }
+[; ;rotation.c: 38: }
+"38
+[e :UE 351 ]
+}
+"40
+[v _left `(v ~T0 @X0 1 ef2`i`i ]
+{
+[; ;rotation.c: 40: void left(int mal,int speed){
+[e :U _left ]
+[v _mal `i ~T0 @X0 1 r1 ]
+[v _speed `i ~T0 @X0 1 r2 ]
+[f ]
+"41
+[v _i `i ~T0 @X0 1 a ]
+"42
+[v _k `i ~T0 @X0 1 a ]
+[; ;rotation.c: 41: int i;
+[; ;rotation.c: 42: int k = 0;
+[e = _k -> 0 `i ]
+"43
+[v _pluse `ui ~T0 @X0 1 a ]
+[; ;rotation.c: 43: uint16_t pluse = step(mal);
+[e = _pluse -> ( _step (1 _mal `ui ]
+[; ;rotation.c: 44: while(k < pluse-20){
+"44
+[e $U 359  ]
+[e :U 360 ]
+{
+[; ;rotation.c: 45: for(i = 0;i < 4;i++){
+"45
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 4 `i 362  ]
+[e $U 363  ]
+[e :U 362 ]
+{
+[; ;rotation.c: 46: RA0 = step_pattern_left[i][0];
+"46
+[e = _RA0 -> *U + &U *U + &U _step_pattern_left * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_left `ui -> -> 4 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _step_pattern_left * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_left `ui -> -> 4 `i `ui `ux `ui `ux `b ]
+[; ;rotation.c: 47: RA4 = step_pattern_left[i][1];
+"47
+[e = _RA4 -> *U + &U *U + &U _step_pattern_left * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_left `ui -> -> 4 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _step_pattern_left * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_left `ui -> -> 4 `i `ui `ux `ui `ux `b ]
+[; ;rotation.c: 48: RC1 = step_pattern_left[i][2];
+"48
+[e = _RC1 -> *U + &U *U + &U _step_pattern_left * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_left `ui -> -> 4 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _step_pattern_left * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_left `ui -> -> 4 `i `ui `ux `ui `ux `b ]
+[; ;rotation.c: 49: RC2 = step_pattern_left[i][3];
+"49
+[e = _RC2 -> *U + &U *U + &U _step_pattern_left * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_left `ui -> -> 4 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _step_pattern_left * -> -> _i `ui `ux -> * -> # *U &U *U &U _step_pattern_left `ui -> -> 4 `i `ui `ux `ui `ux `b ]
+[; ;rotation.c: 50: _delay((unsigned long)((3000)*(8000000/4000000.0)));
+"50
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;rotation.c: 51: k++;
+"51
+[e ++ _k -> 1 `i ]
+"52
+}
+"45
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 4 `i 362  ]
+[e :U 363 ]
+"52
+}
+"53
+}
+[e :U 359 ]
+"44
+[e $ < -> _k `ui - _pluse -> -> 20 `i `ui 360  ]
+[e :U 361 ]
+[; ;rotation.c: 52: }
+[; ;rotation.c: 53: }
+[; ;rotation.c: 54: }
+"54
+[e :UE 358 ]
 }

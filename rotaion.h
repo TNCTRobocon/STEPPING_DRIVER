@@ -8,8 +8,8 @@
 #ifndef ROTAION_H
 #define	ROTAION_H
 
-void right(int step);
-void left(int step);
+void right(int step,int speed);
+void left(int step,int speed);
 
 #endif	/* ROTAION_H */
 

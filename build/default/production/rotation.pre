@@ -4154,11 +4154,129 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 11 "rotaion.h"
-void right(int step);
-void left(int step);
+# 30 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\math.h"
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double) ;
+extern double cos(double) ;
+extern double tan(double) ;
+extern double asin(double) ;
+extern double acos(double) ;
+extern double atan(double);
+extern double atan2(double, double) ;
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double) ;
+extern double exp(double) ;
+extern double sinh(double) ;
+extern double cosh(double) ;
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
 
-# 3 "rotation.c"
+# 11 "rotaion.h"
+void right(int step,int speed);
+void left(int step,int speed);
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 6 "rotation.c"
 int step_pattern_left[4][4]=
 {{0,0,0,1},
 {0,1,0,0},
@@ -4180,7 +4298,6 @@ return a;
 
 void right(int mal,int speed){
 int k = 0;
-
 uint16_t pluse = step(mal);
 while(k < pluse-20){
 for(int i = 0;i < 4;i++){
@@ -4188,14 +4305,13 @@ RA0 = step_pattern_right[i][0];
 RA4 = step_pattern_right[i][1];
 RC1 = step_pattern_right[i][2];
 RC2 = step_pattern_right[i][3];
-_delay((unsigned long)((3000)*(_XTAL_FREQ/4000000.0)));
+_delay((unsigned long)((3000)*(8000000/4000000.0)));
 k++;
 }
 }
-
 }
 
-void left(int mal){
+void left(int mal,int speed){
 int i;
 int k = 0;
 uint16_t pluse = step(mal);
@@ -4205,9 +4321,8 @@ RA0 = step_pattern_left[i][0];
 RA4 = step_pattern_left[i][1];
 RC1 = step_pattern_left[i][2];
 RC2 = step_pattern_left[i][3];
-_delay((unsigned long)((3000)*(_XTAL_FREQ/4000000.0)));
+_delay((unsigned long)((3000)*(8000000/4000000.0)));
 k++;
 }
 }
-
 }

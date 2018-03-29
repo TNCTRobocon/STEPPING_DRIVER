@@ -8,16 +8,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RB0 `Vb ~T0 @X0 0 e@104 ]
 "7657
 [v _RB1 `Vb ~T0 @X0 0 e@105 ]
-"59 newmain.c
+"64 newmain.c
 [v _setup `(i ~T0 @X0 0 ef ]
 "7641 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f1938.h
 [v _RA1 `Vb ~T0 @X0 0 e@97 ]
+"7643
+[v _RA2 `Vb ~T0 @X0 0 e@98 ]
 "7645
 [v _RA3 `Vb ~T0 @X0 0 e@99 ]
 "7649
 [v _RA5 `Vb ~T0 @X0 0 e@101 ]
-"7643
-[v _RA2 `Vb ~T0 @X0 0 e@98 ]
+"16 uart.h
+[v _uart_gets `(*uc ~T0 @X0 0 ef2`*uc`ui ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\include\string.h
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
+"47
+[v _strtok `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
+"51
+[v _strcmp `(i ~T0 @X0 0 ef2`*Cuc`*Cuc ]
+"67 C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdlib.h
+[v _atoi `(i ~T0 @X0 0 ef1`*Cuc ]
+"15 uart.h
+[v _uart_send `(v ~T0 @X0 0 ef1`uc ]
+"11 rotaion.h
+[v _right `(v ~T0 @X0 0 ef2`i`i ]
+"12
+[v _left `(v ~T0 @X0 0 ef2`i`i ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic16f1938.h: 49: extern volatile unsigned char INDF0 @ 0x000;
@@ -3195,13 +3211,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.h: 17: const char* uart_get(const char*);
 [; ;uart.h: 18: const char* uart_write(const char*,size_t);
 [; ;uart.h: 19: char* uart_read(const char*,size_t);
-[; ;uart.h: 20: size_t uart_received();
-[; ;uart.h: 21: inline void uart_flush();
-[; ;uart.h: 22: void TXInterrupt();
-[; ;uart.h: 23: void RXInterrupt();
+[; ;uart.h: 20: void receive_isr(void);
+[; ;uart.h: 21: size_t uart_received();
+[; ;uart.h: 22: inline void uart_flush();
+[; ;uart.h: 23: void TXInterrupt();
+[; ;uart.h: 24: void RXInterrupt();
 [; ;settings.h: 11: void setting();
-[; ;rotaion.h: 11: void right(int step);
-[; ;rotaion.h: 12: void left(int step);
+[; ;rotaion.h: 11: void right(int step,int speed);
+[; ;rotaion.h: 12: void left(int step,int speed);
 [; ;timer.h: 11: void time();
 "28 newmain.c
 [p x FOSC=INTOSC ]
@@ -3242,38 +3259,221 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "57
-[v _sel `i ~T0 @X0 1 a ]
-[; ;newmain.c: 57: int sel;
-[; ;newmain.c: 58: sel =16- (RB2*1+RB3*2+RB0*4+RB1*8)-1;
+[v _line `uc ~T0 @X0 -> 32 `i a ]
 "58
-[e = _sel - - -> 16 `i + + + * -> _RB2 `i -> 1 `i * -> _RB3 `i -> 2 `i * -> _RB0 `i -> 4 `i * -> _RB1 `i -> 8 `i -> 1 `i ]
-[; ;newmain.c: 59: setup();
+[v _argv `*uc ~T0 @X0 -> 4 `i a ]
+[v _title `*uc ~T0 @X0 1 a ]
+[v _val `*uc ~T0 @X0 1 a ]
 "59
-[e ( _setup ..  ]
-[; ;newmain.c: 60: RA1 = 0;
+[v _argc `i ~T0 @X0 1 a ]
 "60
-[e = _RA1 -> -> 0 `i `b ]
-[; ;newmain.c: 61: RA3 = 0;
+[v _it `*uc ~T0 @X0 1 a ]
 "61
-[e = _RA3 -> -> 0 `i `b ]
-[; ;newmain.c: 62: RA5 = 0;
+[v F3561 `Cuc ~T0 @X0 -> 0 `x s tokens ]
+[i F3561
+:U ..
+-> 32 `c
+-> 44 `c
+-> 0 `c
+..
+]
 "62
-[e = _RA5 -> -> 0 `i `b ]
-[; ;newmain.c: 63: RA2 = 0;
+[v _address `i ~T0 @X0 1 a ]
+[; ;newmain.c: 57: char line[32];
+[; ;newmain.c: 58: char* argv[4],* title,* val;
+[; ;newmain.c: 59: int argc;
+[; ;newmain.c: 60: char* it;
+[; ;newmain.c: 61: const char tokens[]=" ,";
+[; ;newmain.c: 62: int address = 16- (RB2*1+RB3*2+RB0*4+RB1*8)-1;;
+[e = _address - - -> 16 `i + + + * -> _RB2 `i -> 1 `i * -> _RB3 `i -> 2 `i * -> _RB0 `i -> 4 `i * -> _RB1 `i -> 8 `i -> 1 `i ]
 "63
-[e = _RA2 -> -> 0 `i `b ]
-[; ;newmain.c: 64: while(1){
+[v _mode_sel `uc ~T0 @X0 1 a ]
+[; ;newmain.c: 63: bool mode_sel=0;
+[e = _mode_sel -> -> 0 `i `uc ]
+[; ;newmain.c: 64: setup();
 "64
+[e ( _setup ..  ]
+[; ;newmain.c: 65: RA1 = 0;
+"65
+[e = _RA1 -> -> 0 `i `b ]
+[; ;newmain.c: 66: RA2 = 0;
+"66
+[e = _RA2 -> -> 0 `i `b ]
+[; ;newmain.c: 67: RA3 = 0;
+"67
+[e = _RA3 -> -> 0 `i `b ]
+[; ;newmain.c: 68: RA5 = 0;
+"68
+[e = _RA5 -> -> 0 `i `b ]
+[; ;newmain.c: 69: while(1){
+"69
 [e :U 357 ]
 {
-"66
+[; ;newmain.c: 70: if(uart_gets(line,sizeof(line))!=(0)){
+"70
+[e $ ! != ( _uart_gets (2 , &U _line -> # _line `ui -> -> 0 `i `*uc 359  ]
+{
+"71
+[v _len `ui ~T0 @X0 1 a ]
+[; ;newmain.c: 71: size_t len=strlen(line);
+[e = _len ( _strlen (1 -> &U _line `*Cuc ]
+[; ;newmain.c: 72: if (line[len-1]=='!')continue;
+"72
+[e $ ! == -> *U + &U _line * -> - _len -> -> 1 `i `ui `ux -> -> # *U &U _line `ui `ux `ui -> 33 `ui 360  ]
+[e $U 356  ]
+[e :U 360 ]
+[; ;newmain.c: 73: argv[0] = strtok(line,tokens);
+"73
+[e = *U + &U _argv * -> -> -> 0 `i `ui `ux -> -> # *U &U _argv `ui `ux ( _strtok (2 , &U _line &U F3561 ]
+[; ;newmain.c: 74: for (argc=1;argc<sizeof(argv)/sizeof(argv[0]);argc++){
+"74
+{
+[e = _argc -> 1 `i ]
+[e $ < -> _argc `ui / -> # _argv `ui -> # *U + &U _argv * -> -> -> 0 `i `ui `ux -> -> # *U &U _argv `ui `ux `ui 361  ]
+[e $U 362  ]
+[e :U 361 ]
+{
+[; ;newmain.c: 75: argv[argc]=it=strtok((0),tokens);
+"75
+[e = *U + &U _argv * -> -> _argc `ui `ux -> -> # *U &U _argv `ui `ux = _it ( _strtok (2 , -> -> 0 `i `*uc &U F3561 ]
+[; ;newmain.c: 76: if(it==(0))break;
+"76
+[e $ ! == _it -> -> 0 `i `*uc 364  ]
+[e $U 362  ]
+[e :U 364 ]
+"77
+}
+"74
+[e ++ _argc -> 1 `i ]
+[e $ < -> _argc `ui / -> # _argv `ui -> # *U + &U _argv * -> -> -> 0 `i `ui `ux -> -> # *U &U _argv `ui `ux `ui 361  ]
+[e :U 362 ]
+"77
+}
+[; ;newmain.c: 77: }
+[; ;newmain.c: 78: title=argv[0];
+"78
+[e = _title *U + &U _argv * -> -> -> 0 `i `ui `ux -> -> # *U &U _argv `ui `ux ]
+[; ;newmain.c: 79: val=argv[1];
+"79
+[e = _val *U + &U _argv * -> -> -> 1 `i `ui `ux -> -> # *U &U _argv `ui `ux ]
+[; ;newmain.c: 80: if(!strcmp(title,"sel")){
+"80
+[e $ ! ! != ( _strcmp (2 , -> _title `*Cuc :s 1C -> 0 `i 365  ]
+{
+"81
+[v _addr `i ~T0 @X0 1 a ]
+[; ;newmain.c: 81: int addr=0;
+[e = _addr -> 0 `i ]
+[; ;newmain.c: 82: if(argc>=2&&argv!=(0))addr=atoi(val);
+"82
+[e $ ! && >= _argc -> 2 `i != &U _argv -> -> 0 `i `**uc 366  ]
+[e = _addr ( _atoi (1 -> _val `*Cuc ]
+[e :U 366 ]
+[; ;newmain.c: 83: if(addr==address)mode_sel=RA5=1;
+"83
+[e $ ! == _addr _address 367  ]
+[e = _mode_sel -> -> = _RA5 -> -> 1 `i `b `i `uc ]
+[e $U 368  ]
+"84
+[e :U 367 ]
+[; ;newmain.c: 84: else if(!addr){
+[e $ ! ! != _addr -> 0 `i 369  ]
+{
+[; ;newmain.c: 85: mode_sel=1;
+"85
+[e = _mode_sel -> -> 1 `i `uc ]
+[; ;newmain.c: 86: RA5=0;
+"86
+[e = _RA5 -> -> 0 `i `b ]
+"87
+}
+[; ;newmain.c: 87: }else mode_sel=RA5=0;
+[e $U 370  ]
+[e :U 369 ]
+[e = _mode_sel -> -> = _RA5 -> -> 0 `i `b `i `uc ]
+[e :U 370 ]
+[e :U 368 ]
+"88
+}
+[; ;newmain.c: 88: }else if(!strcmp(title,"right")){
+[e $U 371  ]
+[e :U 365 ]
+[e $ ! ! != ( _strcmp (2 , -> _title `*Cuc :s 2C -> 0 `i 372  ]
+{
+[; ;newmain.c: 89: uart_send("right");
+"89
+[e ( _uart_send (1 -> :s 3C `uc ]
+[; ;newmain.c: 90: right(val,0);
+"90
+[e ( _right (2 , -> _val `i -> 0 `i ]
+"91
+}
+[; ;newmain.c: 91: }
+[e $U 373  ]
+"92
+[e :U 372 ]
+[; ;newmain.c: 92: else if(!strcmp(title,"left")){
+[e $ ! ! != ( _strcmp (2 , -> _title `*Cuc :s 4C -> 0 `i 374  ]
+{
+[; ;newmain.c: 93: uart_send("left");
+"93
+[e ( _uart_send (1 -> :s 5C `uc ]
+[; ;newmain.c: 94: left(val,0);
+"94
+[e ( _left (2 , -> _val `i -> 0 `i ]
+"95
+}
+[; ;newmain.c: 95: }else if(!strcmp(title,"echo")){
+[e $U 375  ]
+[e :U 374 ]
+[e $ ! ! != ( _strcmp (2 , -> _title `*Cuc :s 6C -> 0 `i 376  ]
+{
+[; ;newmain.c: 96: for(int i=0;i<strlen(val);i++){
+"96
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 380  ]
+[e :U 377 ]
+{
+[; ;newmain.c: 97: uart_send(val[i]);
+"97
+[e ( _uart_send (1 *U + _val * -> _i `x -> -> # *U _val `i `x ]
+"98
+}
+"96
+[e ++ _i -> 1 `i ]
+[e :U 380 ]
+[e $ < -> _i `ui ( _strlen (1 -> _val `*Cuc 377  ]
+[e :U 378 ]
+"98
+}
+"99
+}
+[e :U 376 ]
+"100
+[e :U 375 ]
+[e :U 373 ]
+[e :U 371 ]
+}
+[e :U 359 ]
+"101
 }
 [e :U 356 ]
-"64
+"69
 [e $U 357  ]
 [e :U 358 ]
-[; ;newmain.c: 66: }
-[; ;newmain.c: 67: }
-"67
+[; ;newmain.c: 98: }
+[; ;newmain.c: 99: }
+[; ;newmain.c: 100: }
+[; ;newmain.c: 101: }
+[; ;newmain.c: 102: }
+"102
 [e :UE 355 ]
 }
+[a 2C 114 105 103 104 116 0 ]
+[a 3C 114 105 103 104 116 0 ]
+[a 4C 108 101 102 116 0 ]
+[a 5C 108 101 102 116 0 ]
+[a 6C 101 99 104 111 0 ]
+[a 1C 115 101 108 0 ]

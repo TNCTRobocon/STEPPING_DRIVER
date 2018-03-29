@@ -1,3 +1,4 @@
  build/default/production/interrupt.d  \
  build/default/production/interrupt.p1:  \
- interrupt.c 
+ interrupt.c  \
+uart.h 
