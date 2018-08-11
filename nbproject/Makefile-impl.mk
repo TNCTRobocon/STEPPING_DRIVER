@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=driver_test.X
+PROJECTNAME=step
 
 # Active Configuration
 DEFAULTCONF=default

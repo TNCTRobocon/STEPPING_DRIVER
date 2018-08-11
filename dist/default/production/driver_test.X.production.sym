@@ -1,3 +1,4 @@
+__CFG_PLLEN$ON 0 0 ABS 0
 ___altoft@c 47 0 BANK0 1
 ___awtoft@c 23 0 BANK0 1
 __CFG_WRT$OFF 0 0 ABS 0
@@ -443,7 +444,6 @@ __Lbank17 0 0 BANK17 1
 __ptext22 400 0 CODE 0
 __Hbank27 0 0 BANK27 1
 __Lbank27 0 0 BANK27 1
-__CFG_PLLEN$OFF 0 0 ABS 0
 __ptext13 29E 0 CODE 0
 __Hbank18 0 0 BANK18 1
 __Lbank18 0 0 BANK18 1
@@ -571,7 +571,7 @@ clrtext 1BDE 1BE9 CODE 1BDE 0
 inittext 1BD2 1BDD CODE 1BD2 0
 %locals
 dist/default/production\driver_test.X.production.obj
-C:\Users\MORIYAMA\AppData\Local\Temp\s6g0.
+C:\Users\MORIYAMA\AppData\Local\Temp\s7ak.
 2020 15 0 CODE 0
 2023 15 0 CODE 0
 2094 15 0 CODE 0

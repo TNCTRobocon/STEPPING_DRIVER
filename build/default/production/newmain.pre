@@ -4494,7 +4494,7 @@ void time();
 
 #pragma config WRT = OFF
 #pragma config VCAPEN = OFF
-#pragma config PLLEN = OFF
+#pragma config PLLEN = ON
 #pragma config STVREN = ON
 #pragma config BORV = HI
 #pragma config LVP = OFF

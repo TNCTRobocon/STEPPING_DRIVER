@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.34\dat\en_msgs.txt -cs \
   -h+dist/default/production\driver_test.X.production.sym \
   --cmf=dist/default/production\driver_test.X.production.cmf -z -Q16F1938 \
-  -oC:\Users\MORIYAMA\AppData\Local\Temp\s6g0.6 \
+  -oC:\Users\MORIYAMA\AppData\Local\Temp\s7ak.6 \
   -Mdist/default/production/driver_test.X.production.map -E1 -ver=XC8 \
   -ASTACK=02130h-023efh -pstack=STACK -ACODE=00h-07FFhx8 \
   -ASTRCODE=00h-03FFFh -ASTRING=00h-0FFhx64 -ACONST=00h-0FFhx64 \
@@ -32,7 +32,7 @@ Linker command line:
   -pconfig=CONFIG -DCONFIG=2 -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 \
   -AEEDATA=00h-0FFh/0F000h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\MORIYAMA\AppData\Local\Temp\s6g0.obj \
+  C:\Users\MORIYAMA\AppData\Local\Temp\s7ak.obj \
   dist/default/production\driver_test.X.production.obj 
 
 Object code version is 3.11
@@ -42,7 +42,7 @@ Machine type is 16F1938
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\MORIYAMA\AppData\Local\Temp\s6g0.obj
+C:\Users\MORIYAMA\AppData\Local\Temp\s7ak.obj
                 end_init                             13       13        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2    1000E       0
@@ -471,7 +471,7 @@ __CFG_FOSC$INTOSC        (abs)        00000
 __CFG_IESO$OFF           (abs)        00000
 __CFG_LVP$OFF            (abs)        00000
 __CFG_MCLRE$ON           (abs)        00000
-__CFG_PLLEN$OFF          (abs)        00000
+__CFG_PLLEN$ON           (abs)        00000
 __CFG_PWRTE$OFF          (abs)        00000
 __CFG_STVREN$ON          (abs)        00000
 __CFG_VCAPEN$OFF         (abs)        00000

@@ -3245,7 +3245,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "41
 [p x VCAPEN=OFF ]
 "42
-[p x PLLEN=OFF ]
+[p x PLLEN=ON ]
 "43
 [p x STVREN=ON ]
 "44

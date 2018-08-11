@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/driver_test.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=driver_test.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=drivertest.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/step.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=step.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=step/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/drivertest.x/bin
+makeDirectory ${TMPDIR}/step/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/drivertest.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/step.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/drivertest.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/step.tar *
 checkReturnCode
 
 # Cleanup

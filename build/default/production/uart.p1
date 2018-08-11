@@ -3135,9 +3135,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.c: 19: rx_used = 0;
 "19
 [e = _rx_used -> -> 0 `i `uc ]
-[; ;uart.c: 21: SPBRG = 12;
+[; ;uart.c: 21: SPBRG = 16;
 "21
-[e = _SPBRG -> -> 12 `i `uc ]
+[e = _SPBRG -> -> 16 `i `uc ]
 [; ;uart.c: 22: RCSTA = 0b10010000;
 "22
 [e = _RCSTA -> -> 144 `i `uc ]

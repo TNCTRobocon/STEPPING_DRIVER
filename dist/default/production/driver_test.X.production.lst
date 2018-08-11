@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.34 build -361300703 
-                                                                                               Mon Mar 26 11:10:55 2018
+                                                                                               Sat Aug 11 10:35:19 2018
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 201502162209
      1                           	processor	16F1938
@@ -3231,8 +3231,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 201502162209
   3165  0E4A  0020               	movlb	0	; select bank0
   3166  0E4B  01E8               	clrf	_rx_used
   3167                           
-  3168                           ;uart.c: 21: SPBRG = 12;
-  3169  0E4C  300C               	movlw	12
+  3168                           ;uart.c: 21: SPBRG = 16;
+  3169  0E4C  3010               	movlw	16
   3170  0E4D  0023               	movlb	3	; select bank3
   3171  0E4E  009B               	movwf	27	;volatile
   3172                           
@@ -6595,7 +6595,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.34 build -361300703 
-Symbol Table                                                                                   Mon Mar 26 11:10:55 2018
+Symbol Table                                                                                   Sat Aug 11 10:35:19 2018
 
            ___altoft@exp 004D              __CFG_CP$OFF 0000            ___altoft@sign 004E  
     ___wmul@multiplicand 0075             ___ftadd@exp1 002F             ___ftadd@exp2 002E  
@@ -6669,32 +6669,32 @@ Symbol Table                                                                    
                    btemp 007E                     ltemp 007E                     start 0013  
                    ttemp 007E                     wtemp 007E            __CFG_IESO$OFF 0000  
           __CFG_MCLRE$ON 0000             ___fttol@exp1 0046             ___fttol@lval 0042  
-                  ??_isr 0072                    ?_ceil 004F                    ?_find 0073  
-                  ?_atoi 0022                    ?_main 0070                    ?_left 005F  
-        __end_of___ftadd 029E            __CFG_WDTE$OFF 0000          __end_of___ftdiv 04A9  
-                  ?_step 0058          __end_of___fttol 0530                    _RCREG 0199  
-                  _RCSTA 019D                    _SPBRG 019B                    _TRISA 008C  
-                  _TRISB 008D                    _TRISC 008E                    _TXREG 019A  
-                  _TXSTA 019E             main@mode_sel 00DE           __CFG_FCMEN$OFF 0000  
-          ___awtoft@sign 0028                    ceil@i 0053                    ceil@x 004F  
-                  _frexp 0F8E                    _errno 0066          __end_of_isdigit 0E0B  
-                  _right 029E            ___ftpack@sign 0077                    atoi@a 0027  
-                  _setup 0E0B                    atoi@s 0029                    _rx_in 0078  
-                  _rxbuf 01C0                    main@i 00E2                    _tx_in 0069  
-                  _txbuf 01A0                    left@i 00A4                    left@k 00A2  
-         __CFG_BOREN$OFF 0000                    ltemp0 007E                    ltemp1 0082  
-                  ltemp2 0086                    ltemp3 0080                    step@a 005D  
-                  ttemp0 007E                    ttemp1 0081                    ttemp2 0084  
-                  ttemp3 0087                    ttemp4 007F                    status 0003  
-                  wtemp0 007E                    wtemp1 0080                    wtemp2 0082  
-                  wtemp3 0084                    wtemp4 0086                    wtemp5 0088  
-                  wtemp6 007F          __end_of_strcspn 0F2D             ?_receive_isr 0070  
-        __initialization 0015             __end_of_ceil 05B5             __end_of_find 0F8E  
-           __end_of_atoi 0620             __end_of_main 01A8             __end_of_left 0400  
-     _step_pattern_right 0140             __end_of_step 0760                   ??_ceil 0052  
-                 ??_find 0075                   ??_atoi 0024                   ??_main 00A6  
-                 ??_left 0063            ___fttol@sign1 0041                   ??_step 0078  
-         __CFG_PLLEN$OFF 0000                   ?_frexp 0073         __end_of___altoft 07DD  
+                  ??_isr 0072            __CFG_PLLEN$ON 0000                    ?_ceil 004F  
+                  ?_find 0073                    ?_atoi 0022                    ?_main 0070  
+                  ?_left 005F          __end_of___ftadd 029E            __CFG_WDTE$OFF 0000  
+        __end_of___ftdiv 04A9                    ?_step 0058          __end_of___fttol 0530  
+                  _RCREG 0199                    _RCSTA 019D                    _SPBRG 019B  
+                  _TRISA 008C                    _TRISB 008D                    _TRISC 008E  
+                  _TXREG 019A                    _TXSTA 019E             main@mode_sel 00DE  
+         __CFG_FCMEN$OFF 0000            ___awtoft@sign 0028                    ceil@i 0053  
+                  ceil@x 004F                    _frexp 0F8E                    _errno 0066  
+        __end_of_isdigit 0E0B                    _right 029E            ___ftpack@sign 0077  
+                  atoi@a 0027                    _setup 0E0B                    atoi@s 0029  
+                  _rx_in 0078                    _rxbuf 01C0                    main@i 00E2  
+                  _tx_in 0069                    _txbuf 01A0                    left@i 00A4  
+                  left@k 00A2           __CFG_BOREN$OFF 0000                    ltemp0 007E  
+                  ltemp1 0082                    ltemp2 0086                    ltemp3 0080  
+                  step@a 005D                    ttemp0 007E                    ttemp1 0081  
+                  ttemp2 0084                    ttemp3 0087                    ttemp4 007F  
+                  status 0003                    wtemp0 007E                    wtemp1 0080  
+                  wtemp2 0082                    wtemp3 0084                    wtemp4 0086  
+                  wtemp5 0088                    wtemp6 007F          __end_of_strcspn 0F2D  
+           ?_receive_isr 0070          __initialization 0015             __end_of_ceil 05B5  
+           __end_of_find 0F8E             __end_of_atoi 0620             __end_of_main 01A8  
+           __end_of_left 0400       _step_pattern_right 0140             __end_of_step 0760  
+                 ??_ceil 0052                   ??_find 0075                   ??_atoi 0024  
+                 ??_main 00A6                   ??_left 0063            ___fttol@sign1 0041  
+                 ??_step 0078                   ?_frexp 0073         __end_of___altoft 07DD  
                  ?_right 005F                   ?_setup 0070         __end_of___awtoft 07FF  
                  _ANSELA 018C                   _ANSELB 018D         __end_of___ftpack 0687  
                  i1l2099 0EB0                   _OSCCON 0099                   _TMR0IF 005A  

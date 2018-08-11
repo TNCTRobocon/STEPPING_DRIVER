@@ -4323,7 +4323,7 @@ rx_in = 0;
 rx_out = 0;
 rx_used = 0;
 
-SPBRG = 12;
+SPBRG = 16;
 RCSTA = 0b10010000;
 TXSTA = 0b00100000;
 

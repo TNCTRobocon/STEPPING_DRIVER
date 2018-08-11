@@ -18,7 +18,7 @@ void uart_setup(){
     rx_out = 0;
     rx_used = 0;
     
-    SPBRG = 12;
+    SPBRG = 16;
     RCSTA  = 0b10010000;        // UART受信有効
     TXSTA  = 0b00100000;        // UART送信有効
     
