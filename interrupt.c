@@ -7,7 +7,8 @@ void interrupt isr(){
         TMR0IF = false;
     }
     if(RCIF){
+        RA1=!RA1;
         receive_isr();
-        RCIF = 0;   
+        RCIF = 0;
     }
 }

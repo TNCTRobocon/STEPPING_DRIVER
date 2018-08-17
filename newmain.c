@@ -52,6 +52,7 @@
 #define LED2 RA2
 #define LED3 RA3
 #define LED_SEL RA5
+#define OFFSET 32
 
 void main() {
     char line[32];
@@ -59,8 +60,9 @@ void main() {
     int argc;
     char* it;
     const char tokens[]=" ,";
-    int address = 16- (RB2*1+RB3*2+RB0*4+RB1*8)-1;;
+    int address = (RB2*1+RB3*2+RB0*4+RB1*8);
     bool mode_sel=0;
+    while(PLLR==0);
     setup();        //初期設定
     LED1 = 0;
     LED2 = 0;

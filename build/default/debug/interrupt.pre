@@ -4277,6 +4277,7 @@ if(TMR0IF){
 TMR0IF = 0;
 }
 if(RCIF){
+RA1=!RA1;
 receive_isr();
 RCIF = 0;
 }

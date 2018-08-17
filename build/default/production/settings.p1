@@ -13,22 +13,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ANSELA `Vuc ~T0 @X0 0 e@396 ]
 "3067
 [v _ANSELB `Vuc ~T0 @X0 0 e@397 ]
-"7985
-[v _T0CS `Vb ~T0 @X0 0 e@1197 ]
-"7613
-[v _PSA `Vb ~T0 @X0 0 e@1195 ]
-"7607
-[v _PS0 `Vb ~T0 @X0 0 e@1192 ]
-"7609
-[v _PS1 `Vb ~T0 @X0 0 e@1193 ]
-"7611
-[v _PS2 `Vb ~T0 @X0 0 e@1194 ]
-"779
-[v _TMR0 `Vuc ~T0 @X0 0 e@21 ]
-"7987
-[v _T0IE `Vb ~T0 @X0 0 e@93 ]
-"7989
-[v _T0IF `Vb ~T0 @X0 0 e@90 ]
 "7345
 [v _GIE `Vb ~T0 @X0 0 e@95 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -3055,43 +3039,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;settings.c: 11: TRISC = 0b10000000;
 "11
 [e = _TRISC -> -> 128 `i `uc ]
-[; ;settings.c: 12: OSCCON = 0b01110000;
+[; ;settings.c: 12: OSCCON = 0b11110000;
 "12
-[e = _OSCCON -> -> 112 `i `uc ]
+[e = _OSCCON -> -> 240 `i `uc ]
 [; ;settings.c: 13: ANSELA = 0x00;
 "13
 [e = _ANSELA -> -> 0 `i `uc ]
 [; ;settings.c: 14: ANSELB = 0x00;
 "14
 [e = _ANSELB -> -> 0 `i `uc ]
-[; ;settings.c: 16: T0CS=0;
+[; ;settings.c: 16: GIE=1;
 "16
-[e = _T0CS -> -> 0 `i `b ]
-[; ;settings.c: 17: PSA=0;
-"17
-[e = _PSA -> -> 0 `i `b ]
-[; ;settings.c: 18: PS0=1;
-"18
-[e = _PS0 -> -> 1 `i `b ]
-[; ;settings.c: 19: PS1=1;
-"19
-[e = _PS1 -> -> 1 `i `b ]
-[; ;settings.c: 20: PS2=1;
-"20
-[e = _PS2 -> -> 1 `i `b ]
-[; ;settings.c: 21: TMR0=0;
-"21
-[e = _TMR0 -> -> 0 `i `uc ]
-[; ;settings.c: 22: T0IE=1;
-"22
-[e = _T0IE -> -> 1 `i `b ]
-[; ;settings.c: 23: T0IF=0;
-"23
-[e = _T0IF -> -> 0 `i `b ]
-[; ;settings.c: 24: GIE=1;
-"24
 [e = _GIE -> -> 1 `i `b ]
-[; ;settings.c: 26: }
-"26
+[; ;settings.c: 18: }
+"18
 [e :UE 350 ]
 }

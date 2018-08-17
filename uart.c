@@ -18,13 +18,18 @@ void uart_setup(){
     rx_out = 0;
     rx_used = 0;
     
-    SPBRG = 16;
+    SPBRG = 42;
+//    BRGH = 0;
     RCSTA  = 0b10010000;        // UART受信有効
     TXSTA  = 0b00100000;        // UART送信有効
     
     RCIF = 0;                   //?????????
     RCIE = 1;                   //??????????
     PEIE = 1;                   //??????????
+    
+    TXIE = 1;                   //送信割り込み有効
+    TXIE = 1;                   //送信有効
+    TXIF = 0;                   //フラグリセット   
 }
 
 size_t uart_received(){

@@ -3,6 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TMR0IF `Vb ~T0 @X0 0 e@90 ]
 "7693
 [v _RCIF `Vb ~T0 @X0 0 e@141 ]
+"7641
+[v _RA1 `Vb ~T0 @X0 0 e@97 ]
 "20 uart.h
 [v _receive_isr `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -3076,17 +3078,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 "9
 [e $ ! _RCIF 352  ]
 {
-[; ;interrupt.c: 10: receive_isr();
+[; ;interrupt.c: 10: RA1=!RA1;
 "10
-[e ( _receive_isr ..  ]
-[; ;interrupt.c: 11: RCIF = 0;
+[e = _RA1 ! _RA1 ]
+[; ;interrupt.c: 11: receive_isr();
 "11
-[e = _RCIF -> -> 0 `i `b ]
+[e ( _receive_isr ..  ]
+[; ;interrupt.c: 12: RCIF = 0;
 "12
+[e = _RCIF -> -> 0 `i `b ]
+"13
 }
 [e :U 352 ]
-[; ;interrupt.c: 12: }
 [; ;interrupt.c: 13: }
-"13
+[; ;interrupt.c: 14: }
+"14
 [e :UE 350 ]
 }

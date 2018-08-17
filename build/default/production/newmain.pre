@@ -4494,25 +4494,26 @@ void time();
 
 #pragma config WRT = OFF
 #pragma config VCAPEN = OFF
-#pragma config PLLEN = ON
+#pragma config PLLEN = OFF
 #pragma config STVREN = ON
 #pragma config BORV = HI
 #pragma config LVP = OFF
 
-# 56
+# 57
 void main() {
 char line[32];
 char* argv[4],* title,* val;
 int argc;
 char* it;
 const char tokens[]=" ,";
-int address = 16- (RB2*1+RB3*2+RB0*4+RB1*8)-1;;
+int address = (RB2*1+RB3*2+RB0*4+RB1*8);
 bool mode_sel=0;
 setup();
 RA1 = 0;
 RA2 = 0;
 RA3 = 0;
 RA5 = 0;
+while(PLLR==0);
 while(1){
 if(uart_gets(line,sizeof(line))!=(0)){
 size_t len=strlen(line);

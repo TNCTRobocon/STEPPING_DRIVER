@@ -4323,13 +4323,18 @@ rx_in = 0;
 rx_out = 0;
 rx_used = 0;
 
-SPBRG = 16;
+SPBRG = 12;
+
 RCSTA = 0b10010000;
 TXSTA = 0b00100000;
 
 RCIF = 0;
 RCIE = 1;
 PEIE = 1;
+
+TXIE = 1;
+TXIE = 1;
+TXIF = 0;
 }
 
 size_t uart_received(){
